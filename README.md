@@ -1,73 +1,127 @@
-# React + TypeScript + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive todo application built with React, TypeScript, and Vite. Manage your tasks efficiently with filtering options and persistent state management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Create new todos
+- 🔍 Filter todos by status (All, Active, Completed)
+- ✔️ Mark todos as completed
+- 🗑️ Delete todos
+- 📱 Responsive design with Tailwind CSS
+- ⚡ Fast development experience with Vite
+- 🛡️ Type-safe with TypeScript
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Fast build tool and dev server
+- **React Router** - Navigation and URL parameter handling
+- **Tailwind CSS** - Utility-first CSS framework
+- **ESLint** - Code linting
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── AddTodo.tsx      # Form to add new todos
+│   ├── Navbar.tsx       # Navigation with filter options
+│   └── Todos.tsx        # Display and manage todos list
+├── store/
+│   └── Todos.tsx        # State management for todos
+├── App.tsx              # Main application component
+├── main.tsx             # Application entry point
+├── App.css              # Application styles
+└── index.css            # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Todo
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+### Development
+
+Start the development server with hot module replacement:
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+### Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+### Preview
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+### Lint
+
+Check for code issues with ESLint:
+
+```bash
+npm run lint
+```
+
+## Usage
+
+1. **Adding a Todo**: Type your task in the input field and click "Add" or press Enter
+2. **Filtering Todos**: Use the navigation bar to filter by:
+   - **All** - See all todos
+   - **Active** - See incomplete todos
+   - **Completed** - See finished todos
+3. **Completing a Todo**: Click the checkbox next to a todo to mark it as complete
+4. **Deleting a Todo**: Click the delete button to remove a todo
+
+## Development
+
+This project uses Vite for fast development and hot module replacement. The React plugin supports both Babel and SWC for Fast Refresh:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) - Uses Babel
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) - Uses SWC
+
+## ESLint Configuration
+
+For production applications, consider enabling type-aware lint rules in `eslint.config.js`:
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+tseslint.configs.recommendedTypeChecked
+// or for stricter rules:
+tseslint.configs.strictTypeChecked
 ```
+
+You can also install React-specific linting plugins:
+- `eslint-plugin-react-x`
+- `eslint-plugin-react-dom`
+
+## License
+
+This project is open source and available under the MIT License.
